@@ -1,15 +1,15 @@
 import random
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtGui import QPainter, QBrush, QColor
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
+from mydesign import Ui_MainWindow
 
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)  # загружаем дизайн
+        self.setupUi(self)  # загружаем дизайн
         self.initUI()
         self.paint = False
 
@@ -29,9 +29,11 @@ class MainWindow(QMainWindow):
 
     def run(self, qp):
         # Рисуем круги желтого цвета с случайным диаметром
-        qp.setBrush(QBrush(QColor(219, 242, 7)))
+        qp.setBrush(QBrush(QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))))
         qp.drawEllipse(500, 50, random.randint(100, 250), random.randint(100, 250))
+        qp.setBrush(QBrush(QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))))
         qp.drawEllipse(300, 100, random.randint(100, 250), random.randint(100, 250))
+        qp.setBrush(QBrush(QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))))
         qp.drawEllipse(150, 150, random.randint(100, 250), random.randint(100, 250))
 
 
